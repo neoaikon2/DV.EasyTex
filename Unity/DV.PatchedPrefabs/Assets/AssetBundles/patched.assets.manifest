@@ -1,0 +1,33 @@
+ManifestFileVersion: 0
+CRC: 689040985
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 719aa54d8537fbec2da9f477be6ee031
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 6a51598c0d999ead50e722e23076ecce
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 205
+  Script: {instanceID: 0}
+Assets:
+- Assets/PatchedPrefabs/Patched_BoxCar.prefab
+- Assets/PatchedPrefabs/Patched_CarCaboose.prefab
+- Assets/PatchedPrefabs/Patched_FlatCar.prefab
+- Assets/PatchedPrefabs/Patched_CarTanker.prefab
+Dependencies: []

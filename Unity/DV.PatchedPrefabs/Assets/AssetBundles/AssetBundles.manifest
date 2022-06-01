@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 362203461
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: patched.assets
+      Dependencies: {}
