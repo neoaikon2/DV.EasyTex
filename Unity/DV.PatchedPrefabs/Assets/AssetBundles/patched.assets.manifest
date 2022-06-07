@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 689040985
+CRC: 1698669217
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 719aa54d8537fbec2da9f477be6ee031
+    Hash: bb5a2563f3ed314bb33e2d2b9858ea46
   TypeTreeHash:
     serializedVersion: 2
     Hash: 6a51598c0d999ead50e722e23076ecce
@@ -27,6 +27,7 @@ ClassTypes:
   Script: {instanceID: 0}
 Assets:
 - Assets/PatchedPrefabs/Patched_BoxCar.prefab
+- Assets/PatchedPrefabs/Patched_PassengerCar.prefab
 - Assets/PatchedPrefabs/Patched_CarCaboose.prefab
 - Assets/PatchedPrefabs/Patched_FlatCar.prefab
 - Assets/PatchedPrefabs/Patched_CarTanker.prefab

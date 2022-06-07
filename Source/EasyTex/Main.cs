@@ -47,13 +47,23 @@ namespace EasyTex
 				"car_boxcar_lod/car_boxcar_LOD1",
 				"car_boxcar_lod/car_boxcar_LOD2",
 				"car_boxcar_lod/car_boxcar_LOD3"};
+			private static string[] passengerLODMap = new string[]
+			{
+				"car_passenger_lod/passenger_car/exterior",
+				"car_passenger_lod/passenger_car/front doors",
+				"car_passenger_lod/passenger_car/side doors",
+				"car_passenger_lod/car_passenger_LOD1",
+				"car_passenger_lod/car_passenger_LOD2",
+				"car_passenger_lod/car_passenger_LOD3"
+			};
 
 			private static string[] patchedPrefabList = new string[]
 			{
 				"Patched_CarTanker",
 				"Patched_CarCaboose",
 				"Patched_FlatCar",
-				"Patched_BoxCar"
+				"Patched_BoxCar",
+				"Patched_PassengerCar"
 			};
 
 			// Return a LOD mapping based on the supplied carType
@@ -78,6 +88,10 @@ namespace EasyTex
 					case TrainCarType.BoxcarPink:
 					case TrainCarType.BoxcarRed:
 						return boxCarLODMap;
+					case TrainCarType.PassengerBlue:
+					case TrainCarType.PassengerGreen:
+					case TrainCarType.PassengerRed:
+						return passengerLODMap;
 					default:
 						return null;
 				}
@@ -122,6 +136,10 @@ namespace EasyTex
 					case TrainCarType.BoxcarPink:
 					case TrainCarType.BoxcarRed:
 						return patchedPrefabs[3];
+					case TrainCarType.PassengerBlue:
+					case TrainCarType.PassengerGreen:
+					case TrainCarType.PassengerRed:
+						return patchedPrefabs[4];
 					default:
 						return null;
 				}

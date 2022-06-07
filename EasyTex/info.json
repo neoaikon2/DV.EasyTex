@@ -4,7 +4,7 @@
   "Author": "Crypto [Neo]",
   "Version": "1.0.0",  
   "AssemblyName": "DVEasyTex.dll",
-  "EntryMethod": "EasyTex.Main.Load",
+  "EntryMethod": "EasyTex.Main.Load",  
   "Repository": "https://github.com/neoaikon2/DV.EasyTex.git",
   "HomePage": "https://www.nexusmods.com/derailvalley/mods/453"
 }
