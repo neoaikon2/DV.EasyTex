@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 548}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -46,7 +46,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 997
-  m_MinSize: {x: 950, y: 548}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 498}
   m_MaxSize: {x: 14004, y: 14048}
   vertical: 0
-  controlID: 84
+  controlID: 105
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 498}
   m_MaxSize: {x: 10002, y: 14048}
   vertical: 1
-  controlID: 85
+  controlID: 106
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 224}
   m_MaxSize: {x: 8006, y: 4024}
   vertical: 0
-  controlID: 50
+  controlID: 107
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -308,9 +308,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1.2795417, y: -4.6827216, z: -1.4034625}
+    m_Target: {x: -2.3725882, y: 1.5349274, z: -1.0126572}
     speed: 2
-    m_Value: {x: 1.2795417, y: -4.6827216, z: -1.4034625}
+    m_Value: {x: -2.3725882, y: 1.5349274, z: -1.0126572}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -342,9 +342,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: -0.13811055, y: 0.850072, z: -0.27446812, w: -0.42775035}
   m_Size:
-    m_Target: 2.5325484
+    m_Target: 13.835421
     speed: 2
-    m_Value: 2.5325484
+    m_Value: 13.835421
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -385,9 +385,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 92260000
       m_LastClickedID: 0
-      m_ExpandedIDs: defbffff
+      m_ExpandedIDs: 4af8ffff50f8ffffc0fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -619,20 +619,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Packages
+    - Assets/PatchedPrefabs
   m_ViewMode: 1
   m_StartGridSize: 82
   m_LastFolders:
-  - Packages
+  - Assets/PatchedPrefabs
   m_LastFoldersGridSize: 82
   m_LastProjectPath: C:\Users\neoai\Documents\Git Repos\Derail Valley\DVEasyTex\Unity\DV.PatchedPrefabs
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: ffffff7f
-    m_LastClickedID: 2147483647
-    m_ExpandedIDs: 000000007a090000060b0000440b000000ca9a3b
+    m_SelectedIDs: 00280000
+    m_LastClickedID: 10240
+    m_ExpandedIDs: 0000000036260000c22700000028000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -660,7 +660,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000007a090000060b0000440b0000
+    m_ExpandedIDs: 0000000036260000c227000000280000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -687,7 +687,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300004cf2000022f200003ef20000d27d0000468a0000ae700000e45e0000988801008a8801007c8801004a05010024050100700501001af40000aa15010008f3000084400000b8f4000034ba0000fc5600009e71000092400000c002010058f60000949800005cf300004af3000080f3000078f100008af10000c8f10000b640000084f3000034c40000bc5f0000c81e00003eef0000d2f40000c01d00006a5500008455000032cd0000000000006c390000e04f0000044b0000224b00000a7100001c71000040710000fa700000783200007e3200008af5fdffac4300007a320000ee3e00009a5f000082380000460a00006a2900008c290000fa2e0000fc0a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -712,7 +712,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 0}
+    m_ScrollPosition: {x: 0, y: 21}
     m_GridSize: 82
   m_DirectoriesAreaWidth: 242
 --- !u!114 &18

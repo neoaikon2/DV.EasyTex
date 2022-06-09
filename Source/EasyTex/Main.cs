@@ -12,12 +12,16 @@ namespace EasyTex
 		static UnityModManager.ModEntry _mod;
 		static AssetBundle bundle;
 		static GameObject[] patchedPrefabs = { null };
+		static bool slicedCarsInstalled = false;
 
 		static void Load(UnityModManager.ModEntry mod)
 		{
 			// Setup UMM
 			_mod = mod;
 
+			slicedCarsInstalled = Directory.Exists(Path.Combine(mod.Path, "../SlicedPassengerCars"));
+			if (slicedCarsInstalled)
+				mod.Logger.Warning("Sliced Passenger Cars mod detected! Patched passenger cars have been disabled.");
 			// Setup the harmony patches
 			Harmony harmony = new Harmony(_mod.Info.Id);
 			harmony.Patch(
@@ -147,29 +151,44 @@ namespace EasyTex
 
 			public static void GetCarPrefab_Patch(ref GameObject __result)
 			{
-				// Return if result is invalid
-				if (__result == null)
-					return;
-
-				// Get the traincar component
-				TrainCar tc = __result.GetComponent<TrainCar>();
-
-				// Get the LOD tree for the carType, return on invalid carType
-				string[] lods = GetLODs(tc.carType);
-				if (lods == null) return;
-
-				// Patch it!
-				// Go through each LOD and copy the UVs from the patched meshes
-				// to the OG meshes
-				foreach (string lod in lods)
+				try
 				{
-					Mesh m = GetPatchedPrefab(tc.carType).transform.Find(lod).GetComponent<MeshFilter>().mesh;
-					m.RecalculateBounds();
-					m.Optimize();
-					__result.transform.Find(lod).GetComponent<MeshFilter>().mesh = m;
+					// Return if result is invalid
+					if (__result == null)
+						return;
+
+					// Get the traincar component
+					TrainCar tc = __result.GetComponent<TrainCar>();
+
+					if ((
+							tc.carType == TrainCarType.PassengerBlue ||
+							tc.carType == TrainCarType.PassengerGreen ||
+							tc.carType == TrainCarType.PassengerRed
+						) &&
+						slicedCarsInstalled)
+						return;
+
+					// Get the LOD tree for the carType, return on invalid carType
+					string[] lods = GetLODs(tc.carType);
+					if (lods == null) return;
+
+					// Patch it!
+					// Go through each LOD and copy the UVs from the patched meshes
+					// to the OG meshes
+					foreach (string lod in lods)
+					{
+						Mesh m = GetPatchedPrefab(tc.carType).transform.Find(lod).GetComponent<MeshFilter>().mesh;
+						m.RecalculateBounds();
+						m.Optimize();
+						__result.transform.Find(lod).GetComponent<MeshFilter>().mesh = m;
+					}
+					_mod.Logger.Log("Successfully patched mesh for " + tc.name);
+					// LittleLad: Nice AND easy!
+
+				} catch(Exception e)
+				{
+					_mod.Logger.LogException(e);
 				}
-				Debug.Log("Successfully patched mesh for " + tc.name);
-				// LittleLad: Nice AND easy!
 			}
 		}
 	}
