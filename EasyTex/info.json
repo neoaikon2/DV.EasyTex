@@ -2,7 +2,7 @@
   "Id": "EasyTex",
   "DisplayName": "Easy Tex",
   "Author": "Crypto [Neo]",
-  "Version": "1.1.1",  
+  "Version": "1.1.2",  
   "AssemblyName": "DVEasyTex.dll",
   "EntryMethod": "EasyTex.Main.Load",  
   "Repository": "https://github.com/neoaikon2/DV.EasyTex.git",
