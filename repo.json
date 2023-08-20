@@ -3,5 +3,6 @@
   [
 	{"Id": "EasyTex", "Version": "1.1.2", "DownloadUrl": "https://github.com/neoaikon2/DV.EasyTex/releases/download/v1.1.2/EasyTex_v_1_1_2.zip"},
 	{"Id": "EasyTex", "Version": "1.1.3", "DownloadUrl": "https://github.com/neoaikon2/DV.EasyTex/releases/download/v1.1.2/EasyTex_v_1_1_3.zip"}
+	{"Id": "EasyTex", "Version": "2.0.0", "DownloadUrl": "https://github.com/neoaikon2/DV.EasyTex/releases/download/v2.0.0/EasyTex_v_2_0_0.zip"}
   ]
 }
