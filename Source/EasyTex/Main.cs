@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityModManagerNet;
+using DV.ThingTypes;
 
 namespace EasyTex
 {
@@ -25,7 +26,7 @@ namespace EasyTex
 			// Setup the harmony patches
 			Harmony harmony = new Harmony(_mod.Info.Id);
 			harmony.Patch(
-				original: AccessTools.Method(typeof(CarTypes), nameof(CarTypes.GetCarPrefab)),
+				original: AccessTools.Method(typeof(TrainCar), nameof(TrainCar.GetCarPrefab)),
 				postfix: new HarmonyMethod(typeof(Patches), nameof(Patches.GetCarPrefab_Patch)));
 		}
 
@@ -36,11 +37,19 @@ namespace EasyTex
 				"car_tanker_lod/car_tanker_LOD1",
 				"car_tanker_lod/car_tanker_LOD2",
 				"car_tanker_lod/car_tanker_LOD3"};
+			private static string[] carTankLODMap_Sim = new string[]
+			{
+				"CarTank/CarTank_LOD0",
+				"CarTank/CarTank_LOD1",
+				"CarTank/CarTank_LOD2",
+				"CarTank/CarTank_LOD3",
+			};
 			private static string[] cabooseLODMap = new string[] {
 				"CarCaboose_exterior/CabooseExterior",
 				"CarCaboose_exterior/CabooseExterior_LOD1",
 				"CarCaboose_exterior/CabooseExterior_LOD2",
-				"CarCaboose_exterior/Caboose_LOD3"};
+				"CarCaboose_exterior/Caboose_LOD3"
+			};
 			private static string[] flatCarLODMap = new string[] {
 				"car_flatcar_lod/flatcar",
 				"car_flatcar_lod/car_flatcar_LOD1",
@@ -50,7 +59,14 @@ namespace EasyTex
 				"car_boxcar_lod/car_boxcar",
 				"car_boxcar_lod/car_boxcar_LOD1",
 				"car_boxcar_lod/car_boxcar_LOD2",
-				"car_boxcar_lod/car_boxcar_LOD3"};
+				"car_boxcar_lod/car_boxcar_LOD3"
+			};
+			private static string[] boxCarLODMap_Sim = new string[] {
+				"CarBoxcar/CarBoxcar_LOD0",
+				"CarBoxcar/CarBoxcar_LOD1",
+				"CarBoxcar/CarBoxcar_LOD2",
+				"CarBoxcar/CarBoxcar_LOD3"
+			};
 			private static string[] passengerLODMap = new string[]
 			{
 				"car_passenger_lod/passenger_car/exterior",
@@ -92,6 +108,38 @@ namespace EasyTex
 					case TrainCarType.BoxcarPink:
 					case TrainCarType.BoxcarRed:
 						return boxCarLODMap;
+					// Needs reworked
+					//case TrainCarType.PassengerBlue:
+					//case TrainCarType.PassengerGreen:
+					//case TrainCarType.PassengerRed:
+					//	return passengerLODMap;
+					default:
+						return null;
+				}
+			}
+
+			// Return a LOD mapping based on the supplied carType
+			private static string[] GetLODs_Sim(TrainCarType carType)
+			{
+				switch (carType)
+				{
+					case TrainCarType.TankBlack:
+					case TrainCarType.TankBlue:
+					case TrainCarType.TankChrome:
+					case TrainCarType.TankOrange:
+					case TrainCarType.TankWhite:
+					case TrainCarType.TankYellow:
+						return carTankLODMap_Sim;
+					case TrainCarType.CabooseRed:
+						return cabooseLODMap;
+					// Disabled, but I'm not willing to remove it completely
+					//case TrainCarType.FlatbedEmpty:
+					//	return flatCarLODMap;
+					case TrainCarType.BoxcarBrown:
+					case TrainCarType.BoxcarGreen:
+					case TrainCarType.BoxcarPink:
+					case TrainCarType.BoxcarRed:
+						return boxCarLODMap_Sim;
 					case TrainCarType.PassengerBlue:
 					case TrainCarType.PassengerGreen:
 					case TrainCarType.PassengerRed:
@@ -113,7 +161,9 @@ namespace EasyTex
 				{
 					patchedPrefabs = new GameObject[patchedPrefabList.Length];
 					for (int i = 0; i < patchedPrefabList.Length; i++)
+					{
 						patchedPrefabs[i] = (GameObject)bundle.LoadAsset(patchedPrefabList[i]);
+					}
 				}
 			}
 
@@ -170,17 +220,21 @@ namespace EasyTex
 
 					// Get the LOD tree for the carType, return on invalid carType
 					string[] lods = GetLODs(tc.carType);
+					string[] lods_sim = GetLODs_Sim(tc.carType);
 					if (lods == null) return;
 
 					// Patch it!
 					// Go through each LOD and copy the UVs from the patched meshes
 					// to the OG meshes
-					foreach (string lod in lods)
-					{
-						Mesh m = GetPatchedPrefab(tc.carType).transform.Find(lod).GetComponent<MeshFilter>().mesh;
+					//foreach (string lod, in lods)					
+					for(int i = 0; i < lods.Length; i++)
+					{						
+						Mesh m = GetPatchedPrefab(tc.carType).transform.Find(lods[i]).GetComponent<MeshFilter>().mesh;
+			
 						m.RecalculateBounds();
-						m.Optimize();
-						__result.transform.Find(lod).GetComponent<MeshFilter>().mesh = m;
+			
+                        m.Optimize();
+						__result.transform.Find(lods_sim[i]).GetComponent<MeshFilter>().mesh = m;						
 					}
 					_mod.Logger.Log("Successfully patched mesh for " + tc.name);
 					// LittleLad: Nice AND easy!

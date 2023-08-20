@@ -32,13 +32,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>S:\Program Files (x86)\Steam\steamapps\common\Derail Valley\DerailValley_Data\Managed\UnityModManager\0Harmony.dll</HintPath>
+      <HintPath>D:\Mods\Derail Valley\UnityModManager\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>S:\Program Files (x86)\Steam\steamapps\common\Derail Valley\DerailValley_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>D:\SteamLibrary\steamapps\common\Derail Valley\DerailValley_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>S:\Program Files (x86)\Steam\steamapps\common\Derail Valley\DerailValley_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+      <HintPath>D:\SteamLibrary\steamapps\common\Derail Valley\DerailValley_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
+    <Reference Include="DV.ThingTypes">
+      <HintPath>D:\SteamLibrary\steamapps\common\Derail Valley\DerailValley_Data\Managed\DV.ThingTypes.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -49,13 +52,13 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
-      <HintPath>S:\Program Files (x86)\Steam\steamapps\common\Derail Valley\DerailValley_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>D:\SteamLibrary\steamapps\common\Derail Valley\DerailValley_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AssetBundleModule">
-      <HintPath>S:\Program Files (x86)\Steam\steamapps\common\Derail Valley\DerailValley_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+      <HintPath>D:\SteamLibrary\steamapps\common\Derail Valley\DerailValley_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>S:\Program Files (x86)\Steam\steamapps\common\Derail Valley\DerailValley_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>D:\SteamLibrary\steamapps\common\Derail Valley\DerailValley_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.IMGUIModule">
       <HintPath>S:\Program Files (x86)\Steam\steamapps\common\Derail Valley\DerailValley_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
@@ -64,7 +67,7 @@
       <HintPath>S:\Program Files (x86)\Steam\steamapps\common\Derail Valley\DerailValley_Data\Managed\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityModManager">
-      <HintPath>S:\Program Files (x86)\Steam\steamapps\common\Derail Valley\DerailValley_Data\Managed\UnityModManager\UnityModManager.dll</HintPath>
+      <HintPath>D:\Mods\Derail Valley\UnityModManager\UnityModManager.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
