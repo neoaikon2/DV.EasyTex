@@ -28,6 +28,10 @@ namespace EasyTex
 			harmony.Patch(
 				original: AccessTools.Method(typeof(TrainCar), nameof(TrainCar.GetCarPrefab)),
 				postfix: new HarmonyMethod(typeof(Patches), nameof(Patches.GetCarPrefab_Patch)));
+
+#if DEBUG
+			_mod.Logger.Log("[EasyTex] Started");
+#endif
 		}
 
 		public class Patches
@@ -42,7 +46,7 @@ namespace EasyTex
 				"CarTank/CarTank_LOD0",
 				"CarTank/CarTank_LOD1",
 				"CarTank/CarTank_LOD2",
-				"CarTank/CarTank_LOD3",
+				"CarTank/CarTank_LOD3"
 			};
 			private static string[] cabooseLODMap = new string[] {
 				"CarCaboose_exterior/CabooseExterior",
@@ -97,8 +101,14 @@ namespace EasyTex
 					case TrainCarType.TankOrange:
 					case TrainCarType.TankWhite:
 					case TrainCarType.TankYellow:
+#if DEBUG
+						_mod.Logger.Log("[EasyTex] Getting Tank Car LODs");
+#endif
 						return carTankLODMap;
 					case TrainCarType.CabooseRed:
+#if DEBUG
+						_mod.Logger.Log("[EasyTex] Getting Caboose LODs");
+#endif
 						return cabooseLODMap;
 					// Disabled, but I'm not willing to remove it completely
 					//case TrainCarType.FlatbedEmpty:
@@ -107,6 +117,9 @@ namespace EasyTex
 					case TrainCarType.BoxcarGreen:
 					case TrainCarType.BoxcarPink:
 					case TrainCarType.BoxcarRed:
+#if DEBUG
+						_mod.Logger.Log("[EasyTex] Getting Box Car LODs");
+#endif
 						return boxCarLODMap;
 					// Needs reworked
 					//case TrainCarType.PassengerBlue:
@@ -129,8 +142,14 @@ namespace EasyTex
 					case TrainCarType.TankOrange:
 					case TrainCarType.TankWhite:
 					case TrainCarType.TankYellow:
+#if DEBUG
+						_mod.Logger.Log("[EasyTex] Getting Tank Car LODs");
+#endif
 						return carTankLODMap_Sim;
 					case TrainCarType.CabooseRed:
+#if DEBUG
+						_mod.Logger.Log("[EasyTex] Getting Caboose LODs");
+#endif
 						return cabooseLODMap;
 					// Disabled, but I'm not willing to remove it completely
 					//case TrainCarType.FlatbedEmpty:
@@ -139,11 +158,14 @@ namespace EasyTex
 					case TrainCarType.BoxcarGreen:
 					case TrainCarType.BoxcarPink:
 					case TrainCarType.BoxcarRed:
+#if DEBUG
+						_mod.Logger.Log("[EasyTex] Getting Box Car LODs");
+#endif
 						return boxCarLODMap_Sim;
 					case TrainCarType.PassengerBlue:
 					case TrainCarType.PassengerGreen:
 					case TrainCarType.PassengerRed:
-						return passengerLODMap;
+						//return passengerLODMap;
 					default:
 						return null;
 				}
@@ -165,12 +187,20 @@ namespace EasyTex
 						patchedPrefabs[i] = (GameObject)bundle.LoadAsset(patchedPrefabList[i]);
 					}
 				}
+#if DEBUG
+				_mod.Logger.Log("[EasyTex] Loaded " + patchedPrefabs.Length + "Patches");
+				foreach(GameObject go in patchedPrefabs)
+					_mod.Logger.Log("[EasyTex] " + go.name);
+#endif
 			}
 
 			// Return a patchec prefab based on the specified carType
 			static GameObject GetPatchedPrefab(TrainCarType carType)
 			{
 				if (patchedPrefabs[0] == null) LoadPrefabs();
+#if DEBUG
+				_mod.Logger.Log("[EasyTex] Patching a " + carType.ToString());
+#endif
 				switch (carType)
 				{
 					case TrainCarType.TankBlack:
@@ -221,7 +251,13 @@ namespace EasyTex
 					// Get the LOD tree for the carType, return on invalid carType
 					string[] lods = GetLODs(tc.carType);
 					string[] lods_sim = GetLODs_Sim(tc.carType);
-					if (lods == null) return;
+					if (lods == null || lods_sim == null)
+					{
+#if DEBUG
+						_mod.Logger.Log("[EasyTex] LODs null return");
+#endif
+						return;
+					}
 
 					// Patch it!
 					// Go through each LOD and copy the UVs from the patched meshes
