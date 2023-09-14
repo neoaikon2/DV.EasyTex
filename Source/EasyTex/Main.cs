@@ -268,7 +268,7 @@ namespace EasyTex
 						Mesh m = GetPatchedPrefab(tc.carType).transform.Find(lods[i]).GetComponent<MeshFilter>().mesh;
 			
 						m.RecalculateBounds();
-			
+						m.RecalculateTangents();
                         m.Optimize();
 						__result.transform.Find(lods_sim[i]).GetComponent<MeshFilter>().mesh = m;						
 					}
